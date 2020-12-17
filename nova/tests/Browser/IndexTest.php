@@ -67,7 +67,7 @@ class IndexTest extends DuskTestCase
                     ->within(new IndexComponent('users'), function ($browser) {
                         $browser->click('@create-button');
                     })
-                    ->waitForTextIn('h1', 'Create User', 25)
+                    ->pause(250)
                     ->assertSee('Create & Add Another')
                     ->assertSee('Create User');
 

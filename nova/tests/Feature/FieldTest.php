@@ -5,7 +5,6 @@ namespace Laravel\Nova\Tests\Feature;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Testing\Assert;
 use Laravel\Nova\Fields\Avatar;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Field;
@@ -233,7 +232,7 @@ class FieldTest extends IntegrationTest
     {
         $field = Text::make('Name');
 
-        Assert::assertArraySubset([
+        $this->assertContains([
             'component' => 'text-field',
             'prefixComponent' => true,
             'indexName' => 'Name',
@@ -256,16 +255,8 @@ class FieldTest extends IntegrationTest
             'James',
         ]);
 
-        $this->app->instance(
-            NovaRequest::class,
-            NovaRequest::create('/', 'GET', [
-                'editing' => true,
-                'editMode' => 'create',
-            ])
-        );
-
-        Assert::assertArraySubset([
-            'suggestions' => [4 => 'James'],
+        $this->assertContains([
+            'suggestions' => ['James'],
         ], $field->jsonSerialize());
     }
 
@@ -281,16 +272,8 @@ class FieldTest extends IntegrationTest
             ];
         });
 
-        $this->app->instance(
-            NovaRequest::class,
-            NovaRequest::create('/', 'GET', [
-                'editing' => true,
-                'editMode' => 'create',
-            ])
-        );
-
-        Assert::assertArraySubset([
-            'suggestions' => [4 => 'James'],
+        $this->assertContains([
+            'suggestions' => ['James'],
         ], $field->jsonSerialize());
     }
 
@@ -298,15 +281,7 @@ class FieldTest extends IntegrationTest
     {
         $field = Text::make('Sizes')->suggestions(['Laravel\Nova\Tests\Feature\SuggestionOptions', 'options']);
 
-        $this->app->instance(
-            NovaRequest::class,
-            NovaRequest::create('/', 'GET', [
-                'editing' => true,
-                'editMode' => 'create',
-            ])
-        );
-
-        Assert::assertArraySubset([
+        $this->assertContains([
             'suggestions' => [
                 'Taylor',
                 'David',
@@ -323,7 +298,7 @@ class FieldTest extends IntegrationTest
             'placeholder' => 'This is a placeholder',
         ]]);
 
-        Assert::assertArraySubset([
+        $this->assertContains([
             'extraAttributes' => ['placeholder' => 'This is a placeholder'],
         ], $field->jsonSerialize());
     }

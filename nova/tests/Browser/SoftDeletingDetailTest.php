@@ -65,7 +65,7 @@ class SoftDeletingDetailTest extends DuskTestCase
             $browser->loginAs(User::find(1))
                     ->visit(new Detail('docks', 1))
                     ->click('@edit-resource-button')
-                    ->waitForTextIn('h1', 'Update Dock', 25)
+                    ->pause(250)
                     ->assertPathIs('/nova/resources/docks/1/edit');
 
             $browser->blank();
