@@ -9,8 +9,8 @@
     "license": "MIT",
     "repositories": [
         {
-            "type": "composer",
-            "url": "https://nova.laravel.com"
+            "type": "path",
+            "url": "./nova"
         }
     ],
     "require": {
@@ -25,7 +25,7 @@
         "infinety-es/nova-filemanager": "^2.8",
         "jenssegers/agent": "^2.6",
         "laravel/framework": "^8.12",
-        "laravel/nova": "~3.0",
+        "laravel/nova": "*",
         "laravel/telescope": "^4.3",
         "laravel/tinker": "^2.5",
         "whitecube/nova-flexible-content": "^0.2.6"
