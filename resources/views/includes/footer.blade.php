@@ -1,5 +1,5 @@
 <footer class="bg-dark pt-5">
-    <div class="px-lg-3 pt-2 pb-4">
+    {{-- <div class="px-lg-3 pt-2 pb-4">
         <div class="mx-auto px-3" style="max-width: 80rem;">
             <div class="row">
                 <div class="col-xl-4 col-lg-4 col-sm-6">
@@ -63,7 +63,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <div class="bg-darker px-lg-3 py-3">
         <div class="d-sm-flex justify-content-between align-items-center mx-auto px-3" style="max-width: 80rem;">
             <div class="font-size-xs text-light opacity-50 text-center text-sm-left py-3">© All rights reserved. Made by

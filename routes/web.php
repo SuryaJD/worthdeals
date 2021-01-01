@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductController;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,11 +19,16 @@ use Illuminate\Support\Facades\Log;
 */
 
 Route::get('/', function () {
-    return view('layouts.main');
+    return view('pages.home');
 });
 
+Route::get('/pages', function () {
+    return view('pages.home');
+});
 
-Route::get('p/{product:slug}',[ProductController::class, 'share'])->middleware('affiliate');
+Route::get('p/{product:slug}',[ProductController::class, 'show'])->name('product.single');
+
+Route::get('product/{category}',[ProductController::class, 'category'])->name('product.category');
 
 Route::get('flipkart/feeds',function(){
     $response = Http::withHeaders([
@@ -31,9 +37,11 @@ Route::get('flipkart/feeds',function(){
     ])->get('https://affiliate-api.flipkart.net/affiliate/api/surajjadh1.json');
     // dd($list);
     $list = Arr::get(collect($response->json())->get('apiGroups'),'affiliate.apiListings');
-
+    // dd($list);
     foreach ($list as $key => $value) {
         Log::info($key);
-        Log::info(collect(Arr::get($value,'availableVariants'))->get('v1.1.0')['get']);
+        Spatie\Tags\Tag::findOrCreate(str_replace('_',' ',Str::ucfirst($key)),'tags');
+
+        // Log::info(collect(Arr::get($value,'availableVariants'))->get('v1.1.0')['get']);
     }
 });

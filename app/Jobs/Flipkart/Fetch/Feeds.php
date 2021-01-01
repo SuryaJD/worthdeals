@@ -11,6 +11,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class Feeds implements ShouldQueue
 {
@@ -34,15 +35,16 @@ class Feeds implements ShouldQueue
     public function handle()
     {
         $response = Http::withHeaders([
-            "Fk-Affiliate-Id" => "Surajjadh1",
-            "Fk-Affiliate-Token"=> "cca2e3d7f8d1403d86bdd756ca455951"
+            "Fk-Affiliate-Id" => config('services.flipkart.key'),
+            "Fk-Affiliate-Token"=> config('services.flipkart.token'),
         ])->get('https://affiliate-api.flipkart.net/affiliate/api/surajjadh1.json');
-        // dd($list);
         $list = Arr::get(collect($response->json())->get('apiGroups'),'affiliate.apiListings');
-    
         foreach ($list as $key => $value) {
-            Log::info($key);
-            Log::info(collect(Arr::get($value,'availableVariants'))->get('v1.1.0')['get']);
+            $category_feed = collect(Arr::get($value,'availableVariants'))->get('v1.1.0')['get'];
+            if ($key == 'mens_clothing') {
+                Log::emergency($category_feed);
+                Products::dispatch($category_feed);
+            }
         }
     }
 }

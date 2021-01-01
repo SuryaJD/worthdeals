@@ -59,6 +59,7 @@ class Deal extends Resource
             Trix::make('Content')->nullable(),
             KeyValue::make('Images')->rules('json'),
             KeyValue::make('Extra')->rules('json'),
+            KeyValue::make('Offers')->rules('json'),
             DateTime::make('Start at','start_date')->nullable(),
             DateTime::make('Expire at','expiry_date')->nullable(),
             Text::make('Coupon')->nullable(),

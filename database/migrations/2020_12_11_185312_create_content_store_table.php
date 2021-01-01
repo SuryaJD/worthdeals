@@ -28,6 +28,6 @@ class CreateContentStoreTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_store');
+        Schema::dropIfExists('content_store');
     }
 }

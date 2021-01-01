@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\Flipkart\Fetch\Products;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -46,7 +47,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        $product->load(['stores']);
+        return view('products.single',compact('product'));
     }
 
     /**
@@ -86,5 +88,29 @@ class ProductController extends Controller
     public function share(Product $product)
     {
         return response($product);
+    }
+
+    public function category($category)
+    {
+        if ($category == 'electronics') {
+            $products = Product::withAnyTags(['laptops'])->limit(100)->get();
+            return view('products.category',compact('products'));
+        }elseif ($category == 'mobiles') {
+            $products = Product::withAnyTags(['mobiles'])->limit(100)->get();
+            return view('products.category',compact('products'));
+        }elseif ($category == 'food_nutrition') {
+            $products = Product::withAnyTags(['food_nutrition'])->limit(100)->get();
+            return view('products.category',compact('products'));
+        }elseif ($category == 'furniture') {
+            $products = Product::withAnyTags(['furniture'])->limit(100)->get();
+            return view('products.category',compact('products'));
+        }elseif ($category == 'toys') {
+            $products = Product::withAnyTags(['toys'])->limit(100)->get();
+            return view('products.category',compact('products'));
+        }elseif ($category ==  'mens_clothing') {
+            $products = Product::withAnyTags(['mens_clothing'])->limit(100)->get();
+            return view('products.category',compact('products'));
+        }
+        
     }
 }

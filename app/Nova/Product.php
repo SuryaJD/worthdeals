@@ -18,6 +18,7 @@ use Infinety\Filemanager\FilemanagerField;
 use NovaAttachMany\AttachMany;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\BelongsToMany;
+use Spatie\TagsField\Tags;
 
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -61,11 +62,17 @@ class Product extends Resource
             Text::make('Uuid')->default(function ($request) {
                 return Str::orderedUuid();
             }),
+            FilemanagerField::make('featured_image')->nullable(),
             Textarea::make('Description')->nullable(),
             Trix::make('Content')->nullable(),
             KeyValue::make('Images')->rules('json'),
             KeyValue::make('Extra')->rules('json'),
+            KeyValue::make('Offers')->rules('json'),
+            Number::make('Regular Price','regular_price')->nullable(),
+            Number::make('Sale Price','sale_price')->nullable(),
+            Text::make('link')->nullable(),
             AttachMany::make('Stores'),
+            Tags::make('Tags')->type('tags'),
             BelongsToMany::make('Stores'),
         ];
     }
