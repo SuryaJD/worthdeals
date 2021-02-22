@@ -2,12 +2,21 @@
 
 namespace App\Nova;
 
+use App\Models\Blog;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
+
+Use App\Models\Category as CategroyModel;
+use App\Models\Product;
+use Infinety\Filemanager\FilemanagerField;
+use Laravel\Nova\Fields\KeyValue;
+use Laravel\Nova\Fields\MorphTo;
+use Laravel\Nova\Fields\Slug;
 
 class Category extends Resource
 {
@@ -23,7 +32,7 @@ class Category extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'Title';
 
     /**
      * The columns that should be searched.
@@ -31,7 +40,7 @@ class Category extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'id','title','slug','description'
     ];
 
     /**
@@ -44,11 +53,31 @@ class Category extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
-            Text::make('Title'),
-            Text::make('Slug'),
-            Number::make('Parent','parent_id'),
-            Boolean::make('Active','is_active'),
-            Number::make('order'),
+            
+            Text::make('Title')->rules('required', 'max:255'),
+
+            Slug::make('Slug')->from('Title')->separator('-'),
+
+            FilemanagerField::make('Icon')->displayAsImage()->rules('required'),
+
+            KeyValue::make('Banners')
+            ->keyLabel('image') // Customize the key heading
+            ->valueLabel('link') // Customize the value heading
+            ->actionText('Add banner image')
+            ->rules('json'),
+
+            KeyValue::make('Extra')->rules('json'),
+
+
+            Select::make('Parent Category','parent_id')->options(
+                CategroyModel::select('title','id')->where('id','!=',$this->id)->pluck('title','id')
+            )->nullable(),
+            
+            Boolean::make('Active','is_active')->default(true),
+
+
+            
+            Number::make('order')->min(1)->max(100)->step(1)->rules('required', 'numeric'),
         ];
     }
 

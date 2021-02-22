@@ -46,7 +46,11 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        $category->load(['products' => function ($query) {
+            $query->whereNull('deleted_at');
+        }]);
+
+        return view('category.single',compact('category'));
     }
 
     /**

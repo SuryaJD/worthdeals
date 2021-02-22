@@ -19,9 +19,9 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
     <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
-    <link rel="stylesheet" media="screen" href="{{ asset('css/vendor.min.css') }}">
+    <link rel="stylesheet" media="screen" href="{{ asset('css2/vendor.min.css') }}">
     <!-- Main Theme Styles + Bootstrap-->
-    <link rel="stylesheet" media="screen" id="main-styles" href="{{  asset('css/theme.min.css') }}">
+    <link rel="stylesheet" media="screen" id="main-styles" href="{{  asset('css2/theme.min.css') }}">
     @livewireStyles
   </head>
   <!-- Body-->
@@ -112,8 +112,8 @@
     </main>
     <!-- Back To Top Button--><a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted font-size-sm mr-2">Top</span><i class="btn-scroll-top-icon czi-arrow-up">   </i></a>
     <!-- JavaScript libraries, plugins and custom scripts-->
-    <script src="{{ asset('js/vendor.min.js') }}"></script>
-    <script src="{{ asset('js/theme.min.js') }}"></script>
+    <script src="{{ asset('js2/vendor.min.js') }}"></script>
+    <script src="{{ asset('js2/theme.min.js') }}"></script>
     @livewireScripts
   </body>
 </html>

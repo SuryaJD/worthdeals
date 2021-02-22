@@ -2,6 +2,7 @@
     <section class="cz-carousel cz-controls-static cz-dots-enabled cz-dots-light cz-dots-inside mb-4 mb-sm-5">
         <div class="cz-carousel-inner"  data-carousel-options='{"loop": true}'>
           <!-- Slide 1-->
+          {{ $slides }}
           @foreach ($slides as $slide)
           <div>
             <div class="rounded-lg px-md-5 text-center text-xl-left" style="background-color: #59c879;">

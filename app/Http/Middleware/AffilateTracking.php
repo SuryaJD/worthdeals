@@ -35,7 +35,7 @@ class AffilateTracking
                     'affiliate'  => $request->query('shout'), 
                 ]);
                 $response = $next($request);
-                return $response->withCookie(Cookie::make('shout',$request->query('shout') ,5));
+                return $response->withCookie(Cookie::make('shout',$request->query('shout'),30));
             }
 
         }

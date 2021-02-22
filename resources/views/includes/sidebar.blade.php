@@ -1,13 +1,35 @@
-<aside class="cz-sidebar cz-sidebar-fixed" id="sideNav" style="padding-top: 4rem;">
-    <button class="close" type="button" data-dismiss="sidebar" aria-label="Close"><span class="d-inline-block font-size-xs font-weight-normal align-middle">Close sidebar</span><span class="d-inline-block align-middle ml-2" aria-hidden="true">&times;</span></button>
-    <div class="cz-sidebar-inner p-4">
-      <div data-WRID="WRID-146021192185091762" data-widgetType="staticBanner" data-responsive="yes" data-class="affiliateAdsByFlipkart" height="250" width="300"></div><script async src="//affiliate.flipkart.com/affiliate/widgets/FKAffiliateWidgets.js"></script>
+<div class="suha-sidenav-wrapper" id="sidenavWrapper">
+  <!-- Sidenav Profile-->
+  <div class="sidenav-profile">
+    <div class="user-profile"><img src="https://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) )></div>
+    <div class="user-info">
+      <h6 class="user-name mb-0">{{ Auth::user()->name ?? "" }}</h6>
+      <p class="available-balance">Balance <span>$<span class="counter">523.98</span></span></p>
     </div>
-</aside>
-<Style>
-  @media only screen and (min-width: 600px) {
-    #sideNav{
-      display:none;
-    }
-  }
-</Style>
+  </div>
+  <!-- Sidenav Nav-->
+  <ul class="sidenav-nav ps-0">
+    <li><a href="profile.html"><i class="lni lni-user"></i>My Profile</a></li>
+    <li><a href="notifications.html"><i class="lni lni-alarm lni-tada-effect"></i>Notifications<span class="ms-3 badge badge-warning">3</span></a></li>
+    <li class="suha-dropdown-menu"><a href="#"><i class="lni lni-cart"></i>Shop Pages</a>
+      <ul>
+        <li><a href="shop-grid.html">- Shop Grid</a></li>
+        <li><a href="shop-list.html">- Shop List</a></li>
+        <li><a href="single-product.html">- Product Details</a></li>
+        <li><a href="featured-products.html">- Featured Products</a></li>
+        <li><a href="flash-sale.html">- Flash Sale</a></li>
+      </ul>
+    </li>
+    <li><a href="pages.html"><i class="lni lni-empty-file"></i>All Pages</a></li>
+    <li class="suha-dropdown-menu"><a href="wishlist-grid.html"><i class="lni lni-heart"></i>My Wishlist</a>
+      <ul>
+        <li><a href="wishlist-grid.html">- Wishlist Grid</a></li>
+        <li><a href="wishlist-list.html">- Wishlist List</a></li>
+      </ul>
+    </li>
+    <li><a href="settings.html"><i class="lni lni-cog"></i>Settings</a></li>
+    <li><a href="intro.html"><i class="lni lni-power-switch"></i>Sign Out</a></li>
+  </ul>
+  <!-- Go Back Button-->
+  <div class="go-home-btn" id="goHomeBtn"><i class="lni lni-arrow-left"></i></div>
+</div>
