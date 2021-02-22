@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3a8905beee801386e425e98b506eeec6",
+    "content-hash": "3025916c68b2504322425448aa8bb58f",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2187,11 +2187,11 @@
         },
         {
             "name": "laravel/nova",
-            "version": "3.17.0",
+            "version": "3.22.0",
             "dist": {
                 "type": "path",
-                "url": "./nova",
-                "reference": "c72710454adbeb30e0e553ad45e02d3ceb5cd1f4"
+                "url": "./admin",
+                "reference": "4ba9fb7ea196e0039e61cbea574e570a6b15535c"
             },
             "require": {
                 "brick/money": "^0.5.0",
@@ -2200,8 +2200,8 @@
                 "illuminate/support": "^7.0|^8.0",
                 "laravel/ui": "^2.0|^3.0",
                 "moontoast/math": "^1.1",
-                "php": "^7.2.5",
-                "spatie/once": "^1.1 | ^2.0",
+                "php": "^7.2.5|^8.0",
+                "spatie/once": "^1.1|^2.0|^3.0",
                 "symfony/console": "^5.0",
                 "symfony/finder": "^5.0",
                 "symfony/intl": "^5.0",
@@ -2209,8 +2209,8 @@
             },
             "require-dev": {
                 "laravel/legacy-factories": "^1.0",
-                "laravel/nova-dusk-suite": "dev-master",
-                "mockery/mockery": "^1.0",
+                "laravel/nova-dusk-suite": "8.x-dev",
+                "mockery/mockery": "^1.3.3|^1.4.2",
                 "orchestra/testbench-dusk": "^6.5",
                 "phpunit/phpunit": "^8.4",
                 "predis/predis": "^1.1"
