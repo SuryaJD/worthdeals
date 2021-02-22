@@ -31,7 +31,6 @@
         "laravel/nova": "*",
         "laravel/telescope": "^4.4",
         "laravel/tinker": "^2.5",
-        "laravelista/comments": "^4.4",
         "livewire/livewire": "^2.3",
         "optimistdigital/nova-menu-builder": "^5.0",
         "silviolleite/laravelpwa": "^2.0",
