@@ -3,10 +3,12 @@
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Livewire\CategoryPage;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
+use App\Models\Deal;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +22,8 @@ use Illuminate\Support\Str;
 */
 
 Route::get('/', function () {
+    // $deal =  Deal::with(['categories'])->first();
+    // dump($deal);
     return view('pages.home');
 });
 

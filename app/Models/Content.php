@@ -10,8 +10,7 @@ use Illuminate\Support\Arr;
 
 class Content extends Model
 {
-    use HasFactory, SoftDeletes, \Parental\HasChildren, HasTags;
-
+    use HasFactory, SoftDeletes, HasTags;
     
     protected $casts = [
         'images' => 'array',
@@ -21,13 +20,22 @@ class Content extends Model
         'expiry_date' => 'datetime'
     ];
 
-    protected $fillable = ['type'];
-    protected $childColumn = 'type';
+    // protected $fillable = ['type'];
 
+    // protected $childColumn = 'type';
+
+    // protected $childTypes = [
+    //     'deal' => App\Models\Deal::class,
+    // ];
 
     public function stores()
     {
         return $this->belongsToMany(Store::class);
+    }
+
+    public function categories()
+    {
+        return $this->morphToMany(Category::class, 'categoryable');
     }
 
     public function getDisplayPicAttribute()

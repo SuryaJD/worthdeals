@@ -18,7 +18,6 @@
         "bavix/laravel-wallet": "^6.0",
         "beyondcode/nova-tinker-tool": "^1.1",
         "botman/botman": "^2.6",
-        "calebporzio/parental": "^0.11.0",
         "dillingham/nova-attach-many": "^1.0",
         "dkulyk/nova-tabs": "^1.1",
         "fideloper/proxy": "^4.4",
@@ -31,12 +30,14 @@
         "laravel/nova": "*",
         "laravel/telescope": "^4.4",
         "laravel/tinker": "^2.5",
+        "laravelista/comments": "^4.5",
         "livewire/livewire": "^2.3",
-        "optimistdigital/nova-menu-builder": "^5.0",
         "silviolleite/laravelpwa": "^2.0",
+        "spatie/laravel-permission": "^4.0",
         "spatie/laravel-tags": "^3.0",
         "spatie/nova-tags-field": "^3.1",
         "techouse/select-auto-complete": "^1.3",
+        "vyuldashev/nova-permission": "^2.11",
         "whitecube/nova-flexible-content": "^0.2.7"
     },
     "require-dev": {

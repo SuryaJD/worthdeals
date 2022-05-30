@@ -49,13 +49,6 @@
 </head>
 
 <body onload="JavaScript:AutoRefresh(20000);">
-    {{-- <body> --}}
-    <!-- Preloader-->
-    {{-- <div class="preloader" id="preloader">
-      <div class="spinner-grow text-secondary" role="status">
-        <div class="sr-only">Loading...</div>
-      </div>
-    </div> --}}
     <!-- Header Area-->
     @include('includes.header')
     <!-- Sidenav Black Overlay-->

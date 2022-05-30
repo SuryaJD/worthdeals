@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Deal extends Content
+class Deal extends Model
 {
-    use HasFactory, SoftDeletes, \Parental\HasParent;
+    use HasFactory, SoftDeletes;
+
 }

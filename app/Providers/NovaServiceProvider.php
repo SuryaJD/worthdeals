@@ -80,6 +80,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         return [
             new \Infinety\Filemanager\FilemanagerTool(),
             new \Beyondcode\TinkerTool\Tinker(),
+            \Vyuldashev\NovaPermission\NovaPermissionTool::make(),
         ];
     }
 

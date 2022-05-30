@@ -21,6 +21,11 @@ class Category extends Model
         return $this->morphedByMany(Product::class, 'categoryable');
     }
 
+    public function deals()
+    {
+        return $this->morphedByMany(Deal::class,'categoryable');
+    }
+
 
     public function blogs()
     {

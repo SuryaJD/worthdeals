@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
@@ -57,22 +58,47 @@ class Product extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
+            
             Text::make('Name')->sortable(),
-            Slug::make('Slug')->from('Name'),
+            
+            Slug::make('Slug')->from('Name')->hideFromIndex(),
+            
             Text::make('Uuid')->default(function ($request) {
                 return Str::orderedUuid();
-            }),
-            FilemanagerField::make('featured_image')->nullable(),
+            })->hideFromIndex(),
+            
+            FilemanagerField::make('Image','featured_image')->nullable()->displayAsImage()->squared(),
+            
             Textarea::make('Description')->nullable(),
+            
             Trix::make('Content')->nullable(),
-            KeyValue::make('Images')->rules('json'),
+            
+            KeyValue::make('Images')->rules('json')->hideFromIndex(),
+            
             KeyValue::make('Extra')->rules('json'),
+            
             KeyValue::make('Offers')->rules('json'),
+            
             Number::make('Regular Price','regular_price')->nullable(),
+            
             Number::make('Sale Price','sale_price')->nullable(),
-            Text::make('link')->nullable(),
+
+            Text::make('link')->nullable()->displayUsing(function ($link) {
+                return '<a href="'.$link.'" class="cursor-pointer text-70 hover:text-primary mr-3 items-center has-tooltip">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+                </a>';
+            })->asHtml()->onlyOnIndex(),
+
+            Text::make('Page')->displayUsing(function ($slug){
+                return route('product.single', ['product' => $slug]);
+            })->asHtml()->onlyOnIndex(),
+            
             AttachMany::make('Stores'),
+            
             Tags::make('Tags')->type('tags'),
+            
             BelongsToMany::make('Stores'),
         ];
     }

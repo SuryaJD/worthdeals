@@ -14,6 +14,7 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 use Illuminate\Support\Str;
 use Laravel\Nova\Fields\DateTime;
 use NovaAttachMany\AttachMany;
+use Laravel\Nova\Fields\MorphToMany;
 
 class Deal extends Resource
 {
@@ -63,8 +64,12 @@ class Deal extends Resource
             DateTime::make('Start at','start_date')->nullable(),
             DateTime::make('Expire at','expiry_date')->nullable(),
             Text::make('Coupon')->nullable(),
+            
             AttachMany::make('Stores'),
+            
             BelongsToMany::make('Stores'),
+
+            MorphToMany::make('categories'),
         ];
     }
 

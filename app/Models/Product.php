@@ -6,12 +6,36 @@ use Laravelista\Comments\Commentable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Store;
-Use App\Models\Content;
 use App\Traits\WithCategory;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Tags\HasTags;
 
-class Product extends Content
+class Product extends Model
 {
-    use HasFactory, SoftDeletes, \Parental\HasParent, Commentable, WithCategory;
+    use HasFactory, 
+        SoftDeletes,
+        HasTags, 
+        Commentable, 
+        WithCategory;
+    
+    protected $casts = [
+        'images' => 'array',
+        'extra' => 'array',
+        'offers' => 'array',
+        'start_date' => 'datetime',
+        'expiry_date' => 'datetime'
+    ];
+
+    public function stores()
+    {
+        return $this->belongsToMany(Store::class);
+    }
+
+    public function categories()
+    {
+        return $this->morphToMany(Category::class, 'categoryable');
+    }
+
+
 }
  

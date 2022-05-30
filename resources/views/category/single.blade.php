@@ -14,7 +14,7 @@
             <!-- Page Title-->
             <div class="page-heading">
                 <h6 class="mb-0">
-                    <i class="{{$category->icon}}"></i>   
+                    <i class="{{$category->icon}}"></i>
                     {{ $category->title }}
                 </h6>
             </div>
@@ -22,4 +22,8 @@
             <div class="filter-option" id="suhaNavbarToggler"><i class="lni lni-cog"></i></div>
         </div>
     </div>
+    @endsection
+
+    @section('content')
+        @livewire('category-page', ['category' => $category], key($category->id))
     @endsection

@@ -61,10 +61,10 @@ class Category extends Resource
             FilemanagerField::make('Icon')->displayAsImage()->rules('required'),
 
             KeyValue::make('Banners')
-            ->keyLabel('image') // Customize the key heading
-            ->valueLabel('link') // Customize the value heading
-            ->actionText('Add banner image')
-            ->rules('json'),
+                    ->keyLabel('image') // Customize the key heading
+                    ->valueLabel('link') // Customize the value heading
+                    ->actionText('Add banner image')
+                    ->rules('json'),
 
             KeyValue::make('Extra')->rules('json'),
 
